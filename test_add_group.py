@@ -1,59 +1,50 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import Select
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
-import unittest, time, re
+import unittest
+from model_group import Group
 
-class Untitled(unittest.TestCase):
+class test_add_group(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(5)
-        self.base_url = "http://localhost/"
         self.verificationErrors = []
-        self.accept_next_alert = True
 
-    def test_untitled(self):
+    def test_add_group(self):
         driver = self.driver
-        driver.get(self.base_url + "/addressbook/")
-        driver.find_element_by_name("user").send_keys("admin")
-        driver.find_element_by_name("pass").send_keys("secret")
-        driver.find_element_by_css_selector("input[type='submit']").click()
-        driver.find_element_by_link_text("groups").click()
-        driver.find_element_by_css_selector('input[name="new"]').click()   # Не понимаю, что происходит, лол
-        driver.find_element_by_name("group_name").send_keys("rrffr")
-        driver.find_element_by_name("group_header").send_keys("rfrfrf")
-        driver.find_element_by_name("group_footer").send_keys("rfrfrfrfrfrfrf")
-        driver.find_element_by_name("submit").click()
-        driver.find_element_by_link_text("group page").click()
+        self.open_home_page(driver)
+        self.login(driver, name='admin', password='secret')
+        self.create_new_group(driver, Group(group_name='a', group_header='b', group_footer='c'))
+        self.logout(driver)
+
+    def test_add_empty_group(self):
+        driver = self.driver
+        self.open_home_page(driver)
+        self.login(driver, name='admin', password='secret')
+        self.create_new_group(driver, Group(group_name='', group_header='', group_footer=''))
+        self.logout(driver)
+
+    def logout(self, driver):
         driver.find_element_by_link_text("Logout").click()
 
-    def is_element_present(self, how, what):
-        try: self.driver.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
-        return True
+    def create_new_group(self, driver, group):  # Принимает фигню, которую можно забивать в группу.
+        driver.find_element_by_link_text("groups").click()
+        driver.find_element_by_css_selector('input[name="new"]').click()
+        driver.find_element_by_name("group_name").send_keys(group.group_name)
+        driver.find_element_by_name("group_header").send_keys(group.group_header)
+        driver.find_element_by_name("group_footer").send_keys(group.group_footer)
+        driver.find_element_by_name("submit").click()
+        driver.find_element_by_link_text("group page").click()
 
-    def is_alert_present(self):
-        try: self.driver.switch_to_alert()
-        except NoAlertPresentException as e: return False
-        return True
+    def login(self, driver, name, password):      # Принимает логин и пароль.
+        driver.find_element_by_name("user").send_keys(name)
+        driver.find_element_by_name("pass").send_keys(password)
+        driver.find_element_by_css_selector("input[type='submit']").click()
 
-    def close_alert_and_get_its_text(self):
-        try:
-            alert = self.driver.switch_to_alert()
-            alert_text = alert.text
-            if self.accept_next_alert:
-                alert.accept()
-            else:
-                alert.dismiss()
-            return alert_text
-        finally: self.accept_next_alert = True
+    def open_home_page(self, driver):
+        driver.get("http://localhost/addressbook/")
 
     def tearDown(self):
         self.driver.quit()
-        self.assertEqual([], self.verificationErrors)
 
 if __name__ == "__main__":
     unittest.main()
