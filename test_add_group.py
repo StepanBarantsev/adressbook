@@ -36,6 +36,8 @@ class test_add_group(unittest.TestCase):
         driver.find_element_by_link_text("group page").click()
 
     def login(self, driver, name, password):      # Принимает логин и пароль.
+        driver.find_element_by_name("user").clear()
+        driver.find_element_by_name("pass").clear()
         driver.find_element_by_name("user").send_keys(name)
         driver.find_element_by_name("pass").send_keys(password)
         driver.find_element_by_css_selector("input[type='submit']").click()
