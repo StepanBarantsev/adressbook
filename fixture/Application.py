@@ -1,14 +1,12 @@
 from selenium import webdriver
+from fixture.session import SessionHelper
 
 class Application:
 
     def __init__(self):
         self.driver = webdriver.Chrome()
         self.driver.implicitly_wait(0)
-
-    def logout(self):
-        driver = self.driver
-        driver.find_element_by_link_text("Logout").click()
+        self.session = SessionHelper(self)
 
     def create_new_group(self, group):  # Принимает объекти типа Group
         driver = self.driver
@@ -32,14 +30,6 @@ class Application:
         driver.find_element_by_css_selector("input[name='submit']").click()
         driver.find_element_by_link_text("home page").click()
 
-    def login(self, name, password):      # Принимает логин и пароль.
-        driver = self.driver
-        self.open_home_page()
-        driver.find_element_by_name("user").clear()
-        driver.find_element_by_name("pass").clear()
-        driver.find_element_by_name("user").send_keys(name)
-        driver.find_element_by_name("pass").send_keys(password)
-        driver.find_element_by_css_selector("input[type='submit']").click()
 
     def open_home_page(self):
         driver = self.driver
