@@ -16,3 +16,20 @@ class SessionHelper:
         driver = self.app.driver
         driver.find_element_by_link_text("Logout").click()
 
+    def ensure_logout(self):
+        driver = self.app.driver
+        if len(driver.find_elements_by_link_text("Logout")) > 0:
+            self.logout()
+
+    def ensure_login(self, name, password):
+        driver = self.app.driver
+        if len(driver.find_elements_by_link_text("Logout")) > 0:
+            if self.is_logged_in_as(name):
+                return
+            else:
+                self.logout()
+        self.login(name, password)
+
+    def is_logged_in_as(self, name):
+        driver = self.app.driver
+        return driver.find_element_by_xpath('//div/div[1]/form/b').text == '(' + name + ')'
