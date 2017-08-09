@@ -5,7 +5,7 @@ class SessionHelper:
 
     def login(self, name, password):      # Принимает логин и пароль.
         driver = self.app.driver
-        self.open_home_page()
+        self.app.open_home_page()
         driver.find_element_by_name("user").clear()
         driver.find_element_by_name("pass").clear()
         driver.find_element_by_name("user").send_keys(name)
@@ -16,6 +16,3 @@ class SessionHelper:
         driver = self.app.driver
         driver.find_element_by_link_text("Logout").click()
 
-    def open_home_page(self):
-        driver = self.app.driver
-        driver.get("http://localhost/addressbook/")

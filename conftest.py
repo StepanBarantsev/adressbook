@@ -4,5 +4,9 @@ from fixture.Application import Application
 @pytest.fixture(scope='session') # scope='session' Чтобы 1 раз браузер открылся
 def app(request):
     fixture = Application()        # Инициалзизация фикстуры
-    request.addfinalizer(fixture.destroy)  # Указание на то, как разрушить фикстуру
+    fixture.session.login('admin', 'secret')
+    def fin():
+        fixture.session.logout()
+        fixture.destroy()
+    request.addfinalizer(fin)  # Указание на то, как разрушить фикстуру
     return fixture
