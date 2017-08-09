@@ -18,3 +18,10 @@ class Application:
     def open_home_page(self):
         driver = self.driver
         driver.get("http://localhost/addressbook/")
+
+    def is_valid(self):
+        try:
+            self.driver.current_url    # Если он может взять текущий url, то все в порядке.
+            return True
+        except:
+            return False

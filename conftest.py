@@ -1,10 +1,21 @@
 import pytest
 from fixture.Application import Application
 # Тут фикстура для всех
-@pytest.fixture(scope='session') # scope='session' Чтобы 1 раз браузер открылся
+fixture = None
+@pytest.fixture
 def app(request):
-    fixture = Application()        # Инициалзизация фикстуры
-    fixture.session.login('admin', 'secret')
+    global fixture
+    if fixture is None:
+        fixture = Application()        # Инициалзизация фикстуры
+        fixture.session.login('admin', 'secret')
+    else:
+        if not fixture.is_valid():
+            fixture = Application()        # Инициалзизация фикстуры
+            fixture.session.login('admin', 'secret')
+    return fixture
+
+@pytest.fixture(scope='session', autouse=True)
+def stop(request):
     def fin():
         fixture.session.logout()
         fixture.destroy()
