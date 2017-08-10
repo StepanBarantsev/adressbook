@@ -7,7 +7,6 @@ class Application:
 
     def __init__(self):
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(0)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
@@ -17,7 +16,8 @@ class Application:
 
     def open_home_page(self):
         driver = self.driver
-        driver.get("http://localhost/addressbook/")
+        if not driver.current_url.endswith('/addressbook/'):
+            driver.get("http://localhost/addressbook/")
 
     def is_valid(self):
         try:
