@@ -44,3 +44,8 @@ class ContactHelper:
         self.input_contact_fields(contact)
         driver.find_element_by_css_selector('input[name="update"]').click()
         driver.find_element_by_link_text("home page").click()
+
+    def count(self):
+        driver = self.app.driver
+        self.app.open_home_page()
+        return len(driver.find_elements_by_name("selected[]"))
