@@ -14,22 +14,10 @@ class GroupHelper:
         self.group_cashe = None   # Тут кеш сбрасываем, так как списко изменен
 
     def delete_first_group(self): # Удаление группы
-        driver = self.app.driver
-        self.open_groups_page()
-        driver.find_element_by_css_selector('input[name="selected[]"]').click()
-        driver.find_element_by_css_selector('input[name="delete"]').click()
-        driver.find_element_by_link_text("group page").click()
-        self.group_cashe = None
+        self.delete_group_by_index(0)
 
-    def modify_first_group(self, group): # Модификация группы. Принимает объект типа Group
-        driver = self.app.driver
-        self.open_groups_page()
-        driver.find_element_by_css_selector('input[name="selected[]"]').click()
-        driver.find_element_by_css_selector('input[name="edit"]').click()
-        self.input_group_fields(group)
-        driver.find_element_by_name("update").click()
-        driver.find_element_by_link_text("group page").click()
-        self.group_cashe = None
+    def modify_first_group(self): # Модификация группы. Принимает объект типа Group
+        self.modify_group_by_index(0)
 
     def input_group_fields(self, group):  # Заполнение полей ввода. Принимает объект типа Group
         driver = self.app.driver
@@ -67,3 +55,25 @@ class GroupHelper:
                 id = element.get_attribute('value')
                 self.groups_cashe.append(Group(group_name=text, group_id=id))
         return list(self.groups_cashe)
+
+    def delete_group_by_index(self, index):
+        driver = self.app.driver
+        self.open_groups_page()
+        self.select_group_by_index(index)
+        driver.find_element_by_css_selector('input[name="delete"]').click()
+        driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None
+
+    def select_group_by_index(self, index):
+        driver = self.app.driver
+        driver.find_elements_by_css_selector('input[name="selected[]"]')[index].click()
+
+    def modify_group_by_index(self, group, index):
+        driver = self.app.driver
+        self.open_groups_page()
+        self.select_group_by_index(index)
+        driver.find_element_by_css_selector('input[name="edit"]').click()
+        self.input_group_fields(group)
+        driver.find_element_by_name("update").click()
+        driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None
