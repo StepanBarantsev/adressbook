@@ -1,3 +1,4 @@
+from models.model_group import Group
 class GroupHelper:
 
     def __init__(self, app):
@@ -50,3 +51,14 @@ class GroupHelper:
         if not(driver.current_url.endswith('/group.php') and len(driver.find_elements_by_name("new")) > 0):
             self.app.open_home_page()
             driver.find_element_by_link_text("groups").click()
+
+    def get_group_list(self):
+        driver = self.app.driver
+        self.open_groups_page()
+        groups = []
+        for element in driver.find_elements_by_css_selector('span.group'):
+            text = element.text
+            element = element.find_element_by_css_selector('input[name="selected[]"]') # Это типа значит что надо искать элемент внутри element
+            id = element.get_attribute('value')
+            groups.append(Group(group_name=text, group_id=id))
+        return groups

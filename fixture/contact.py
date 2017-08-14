@@ -49,3 +49,4 @@ class ContactHelper:
         driver = self.app.driver
         self.app.open_home_page()
         return len(driver.find_elements_by_name("selected[]"))
+
