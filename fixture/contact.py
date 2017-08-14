@@ -11,6 +11,7 @@ class ContactHelper:
         self.input_contact_fields(contact)
         driver.find_element_by_css_selector("input[name='submit']").click()
         driver.find_element_by_link_text("home page").click()
+        self.cont_cashe = None
 
     def delete_first_contact(self):
         driver = self.app.driver
@@ -19,6 +20,7 @@ class ContactHelper:
         driver.find_element_by_css_selector("input[value='Delete']").click()
         driver.switch_to_alert().accept()
         driver.find_element_by_link_text("home").click()
+        self.cont_cashe = None
 
     def input_contact_fields(self, contact):
         driver = self.app.driver
@@ -45,20 +47,24 @@ class ContactHelper:
         self.input_contact_fields(contact)
         driver.find_element_by_css_selector('input[name="update"]').click()
         driver.find_element_by_link_text("home page").click()
+        self.cont_cashe = None
 
     def count(self):
         driver = self.app.driver
         self.app.open_home_page()
         return len(driver.find_elements_by_name("selected[]"))
 
+    cont_cashe = None
+
     def get_contact_list(self):
-        driver = self.app.driver
-        self.app.open_home_page()
-        contacts = []
-        for element in driver.find_elements_by_css_selector('tr[name="entry"]'):
-            id = element.find_element_by_css_selector('input[name="selected[]"]').get_attribute('value')
-            text = list(element.text.split())
-            firstname = text[1]
-            lastname = text[0]
-            contacts.append(Contact(firstname=firstname, lastname=lastname, id=id))
-        return contacts
+        if self.cont_cashe == None:
+            driver = self.app.driver
+            self.app.open_home_page()
+            self.cont_cashe = []
+            for element in driver.find_elements_by_css_selector('tr[name="entry"]'):
+                id = element.find_element_by_css_selector('input[name="selected[]"]').get_attribute('value')
+                text = list(element.text.split())
+                firstname = text[1]
+                lastname = text[0]
+                self.cont_cashe.append(Contact(firstname=firstname, lastname=lastname, id=id))
+        return list(self.cont_cashe)

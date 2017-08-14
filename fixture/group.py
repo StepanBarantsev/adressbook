@@ -11,6 +11,7 @@ class GroupHelper:
         self.input_group_fields(group)
         driver.find_element_by_name("submit").click()
         driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None   # Тут кеш сбрасываем, так как списко изменен
 
     def delete_first_group(self): # Удаление группы
         driver = self.app.driver
@@ -18,6 +19,7 @@ class GroupHelper:
         driver.find_element_by_css_selector('input[name="selected[]"]').click()
         driver.find_element_by_css_selector('input[name="delete"]').click()
         driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None
 
     def modify_first_group(self, group): # Модификация группы. Принимает объект типа Group
         driver = self.app.driver
@@ -27,9 +29,9 @@ class GroupHelper:
         self.input_group_fields(group)
         driver.find_element_by_name("update").click()
         driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None
 
-
-    def input_group_fields(self, group):   # Заполнение полей ввода. Принимает объект типа Group
+    def input_group_fields(self, group):  # Заполнение полей ввода. Принимает объект типа Group
         driver = self.app.driver
         if group.group_name != None:
             driver.find_element_by_name("group_name").clear()
@@ -52,13 +54,16 @@ class GroupHelper:
             self.app.open_home_page()
             driver.find_element_by_link_text("groups").click()
 
+    group_cashe = None
+
     def get_group_list(self):
-        driver = self.app.driver
-        self.open_groups_page()
-        groups = []
-        for element in driver.find_elements_by_css_selector('span.group'):
-            text = element.text
-            element = element.find_element_by_css_selector('input[name="selected[]"]') # Это типа значит что надо искать элемент внутри element
-            id = element.get_attribute('value')
-            groups.append(Group(group_name=text, group_id=id))
-        return groups
+        if self.group_cashe == None:    # Тут если что то уже лежит в кеше, то все отлично
+            driver = self.app.driver
+            self.open_groups_page()
+            self.groups_cashe = []
+            for element in driver.find_elements_by_css_selector('span.group'):
+                text = element.text
+                element = element.find_element_by_css_selector('input[name="selected[]"]') # Это типа значит что надо искать элемент внутри element
+                id = element.get_attribute('value')
+                self.groups_cashe.append(Group(group_name=text, group_id=id))
+        return list(self.groups_cashe)
