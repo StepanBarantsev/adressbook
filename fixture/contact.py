@@ -1,4 +1,7 @@
 from models.model_contact import Contact
+import re
+
+
 class ContactHelper:
 
     def __init__(self, app):
@@ -54,7 +57,13 @@ class ContactHelper:
                 text = list(element.text.split())
                 firstname = text[1]
                 lastname = text[0]
-                self.cont_cashe.append(Contact(firstname=firstname, lastname=lastname, id=id))
+                secondary = text[-1]    # Тут телефоны получаем, но это печаль, если телефонов нет
+                work = text[-2]
+                mob = text[-3]
+                home = text[-4]
+                self.cont_cashe.append(Contact(firstname=firstname, lastname=lastname, id=id,
+                                               secondaryphone=secondary, workphone=work, mobilephone=mob,
+                                               homephone=home))
         return list(self.cont_cashe)
 
     def delete_contact_by_index(self, index):
@@ -79,3 +88,38 @@ class ContactHelper:
         driver = self.app.driver
         self.app.open_home_page()
         driver.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+
+    def open_contact_view_by_index(self, index):
+        driver = self.app.driver
+        self.app.open_home_page()
+        row = driver.find_elements_by_css_selector('tr[name="entry"]')[index]
+        cell = row.find_elements_by_tag_name('td')[6]
+        cell.find_element_by_css_selector('img[title="Details"]').click()
+
+    def get_contact_info_from_edit_page(self, index):
+        driver = self.app.driver
+        self.app.open_home_page()
+        self.open_contact_to_edit_by_index(index)
+        firstname = driver.find_element_by_name('firstname').get_attribute('value')
+        lastname = driver.find_element_by_name('lastname').get_attribute('value')
+        id = driver.find_element_by_name('id').get_attribute('value')
+        homephone = driver.find_element_by_name('home').get_attribute('value')
+        mobilephone = driver.find_element_by_name('mobile').get_attribute('value')
+        workphone = driver.find_element_by_name('work').get_attribute('value')
+        secondaryphone = driver.find_element_by_name('phone2').get_attribute('value')
+        return Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
+                       mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone)
+
+    def get_contact_from_view_page(self, index):
+        driver = self.app.driver
+        self.open_contact_view_by_index(index)
+        text = driver.find_element_by_id('content').text
+        homephone = re.search('H: (.*)', text).group(1)
+        work = re.search('W: (.*)', text).group(1)
+        mobile = re.search('M: (.*)', text).group(1)
+        sec = re.search('P: (.*)', text).group(1)
+        return Contact(homephone=homephone, mobilephone=mobile, workphone=work, secondaryphone=sec)
+
+
+
+
