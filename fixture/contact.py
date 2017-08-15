@@ -69,8 +69,13 @@ class ContactHelper:
     def modify_contact_by_index(self, contact, index):
         driver = self.app.driver
         self.app.open_home_page()
-        driver.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
+        self.open_contact_to_edit_by_index(index)
         self.input_contact_fields(contact)
         driver.find_element_by_css_selector('input[name="update"]').click()
         driver.find_element_by_link_text("home page").click()
         self.cont_cashe = None
+
+    def open_contact_to_edit_by_index(self, index):
+        driver = self.app.driver
+        self.app.open_home_page()
+        driver.find_elements_by_css_selector('img[alt="Edit"]')[index].click()
