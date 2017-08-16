@@ -52,18 +52,15 @@ class ContactHelper:
             driver = self.app.driver
             self.app.open_home_page()
             self.cont_cashe = []
-            for element in driver.find_elements_by_css_selector('tr[name="entry"]'):
-                id = element.find_element_by_css_selector('input[name="selected[]"]').get_attribute('value')
-                text = list(element.text.split())
-                firstname = text[1]
-                lastname = text[0]
-                secondary = text[-1]    # Тут телефоны получаем, но это печаль, если телефонов нет
-                work = text[-2]
-                mob = text[-3]
-                home = text[-4]
+            for row in driver.find_elements_by_name("entry"):
+                cells = row.find_elements_by_tag_name("td")
+                id = row.find_element_by_css_selector('input[name="selected[]"]').get_attribute('value')
+                firstname = cells[2].text
+                lastname = cells[1].text
+                all_phones = cells[5].text.splitlines()
                 self.cont_cashe.append(Contact(firstname=firstname, lastname=lastname, id=id,
-                                               secondaryphone=secondary, workphone=work, mobilephone=mob,
-                                               homephone=home))
+                                               secondaryphone=all_phones[3], workphone=all_phones[2], mobilephone=all_phones[1],
+                                               homephone=all_phones[0]))
         return list(self.cont_cashe)
 
     def delete_contact_by_index(self, index):
