@@ -57,10 +57,12 @@ class ContactHelper:
                 id = row.find_element_by_css_selector('input[name="selected[]"]').get_attribute('value')
                 firstname = cells[2].text
                 lastname = cells[1].text
-                all_phones = cells[5].text.splitlines()
+                address = cells[3].text
+                allemails = cells[4].text
+                all_phones = cells[5].text
                 self.cont_cashe.append(Contact(firstname=firstname, lastname=lastname, id=id,
-                                               secondaryphone=all_phones[3], workphone=all_phones[2], mobilephone=all_phones[1],
-                                               homephone=all_phones[0]))
+                                               all_phones_from_homepage=all_phones, address=address,
+                                               allemails=allemails))
         return list(self.cont_cashe)
 
     def delete_contact_by_index(self, index):
@@ -99,13 +101,18 @@ class ContactHelper:
         self.open_contact_to_edit_by_index(index)
         firstname = driver.find_element_by_name('firstname').get_attribute('value')
         lastname = driver.find_element_by_name('lastname').get_attribute('value')
+        address = driver.find_element_by_name("address").get_attribute("value")
         id = driver.find_element_by_name('id').get_attribute('value')
+        email = driver.find_element_by_name("email").get_attribute("value")
+        email2 = driver.find_element_by_name("email2").get_attribute("value")
+        email3 = driver.find_element_by_name("email3").get_attribute("value")
         homephone = driver.find_element_by_name('home').get_attribute('value')
         mobilephone = driver.find_element_by_name('mobile').get_attribute('value')
         workphone = driver.find_element_by_name('work').get_attribute('value')
         secondaryphone = driver.find_element_by_name('phone2').get_attribute('value')
         return Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
-                       mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone)
+                       mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone,
+                       email1=email, email2=email2, email3=email3, address=address)
 
     def get_contact_from_view_page(self, index):
         driver = self.app.driver
