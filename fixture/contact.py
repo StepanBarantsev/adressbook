@@ -33,9 +33,9 @@ class ContactHelper:
         if contact.nickname != None:
             driver.find_element_by_name("nickname").clear()
             driver.find_element_by_name("nickname").send_keys(contact.nickname)
-        if contact.email != None:
+        if contact.email1 != None:
             driver.find_element_by_name("email").clear()
-            driver.find_element_by_name("email").send_keys(contact.email)
+            driver.find_element_by_name("email").send_keys(contact.email1)
 
     def modify_first_contact(self, contact):
         self.modify_contact_by_index(contact, 0)
@@ -110,19 +110,23 @@ class ContactHelper:
         mobilephone = driver.find_element_by_name('mobile').get_attribute('value')
         workphone = driver.find_element_by_name('work').get_attribute('value')
         secondaryphone = driver.find_element_by_name('phone2').get_attribute('value')
+        middlename = driver.find_element_by_name('middlename').get_attribute('value')
+        nickname = driver.find_element_by_name('nickname').get_attribute('value')
+        title = driver.find_element_by_name('title').get_attribute('value')
+        company = driver.find_element_by_name('company').get_attribute('value')
+        homepage = driver.find_element_by_name('homepage').get_attribute('value')
+        notes = driver.find_element_by_name('notes').get_attribute('value')
+        fax = driver.find_element_by_name('fax').get_attribute('value')
         return Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
                        mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone,
-                       email1=email, email2=email2, email3=email3, address=address)
+                       email1=email, email2=email2, email3=email3, address=address, middlename=middlename,
+                       nickname=nickname, title=title, company=company, homepage=homepage, notes=notes, fax=fax)
 
     def get_contact_from_view_page(self, index):
         driver = self.app.driver
         self.open_contact_view_by_index(index)
-        text = driver.find_element_by_id('content').text
-        homephone = re.search('H: (.*)', text).group(1)
-        work = re.search('W: (.*)', text).group(1)
-        mobile = re.search('M: (.*)', text).group(1)
-        sec = re.search('P: (.*)', text).group(1)
-        return Contact(homephone=homephone, mobilephone=mobile, workphone=work, secondaryphone=sec)
+        all_inf = driver.find_element_by_css_selector('div#content').text      # Тут все данные считываются лопатой
+        return Contact(all_information=all_inf)
 
 
 
