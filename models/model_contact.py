@@ -29,7 +29,12 @@ class Contact:
         self.fax = fax
 
     def __repr__(self):
-        return '%s:%s %s' % (self.id, self.firstname, self.lastname)
+        return 'id:%s, firstname:%s, lastname:%s, middlename:%s, nickname:%s, homephone:%s, mobilephone:%s' \
+               ', workphone:%s, secondaryphone:%s, address:%s, email1:%s' \
+               ', email2:%s, email3:%s, title:%s, notes:%s, company:%s' \
+               ', homepage:%s, fax:%s' % (self.id, self.firstname, self.lastname, self.middlename, self.nickname, self.homephone
+                ,self.mobilephone, self.workphone, self.secondaryphone, self.address, self.email1, self.email2, self.email3, self.title
+                ,self.notes, self.company, self.homepage, self.fax)
 
     def __eq__(self, other):
         return self.firstname == other.firstname and \

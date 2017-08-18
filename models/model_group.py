@@ -8,7 +8,7 @@ class Group:
 
 
     def __repr__(self):
-        return '%s:%s' % (self.group_id, self.group_name)
+        return '%s:%s %s % s' % (self.group_id, self.group_name, self.group_header, self.group_footer)
 
     def __eq__(self, other):
         return self.group_name == other.group_name and (self.group_id == other.group_id or self.group_id == None or other.group_id == None)

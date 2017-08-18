@@ -36,6 +36,42 @@ class ContactHelper:
         if contact.email1 != None:
             driver.find_element_by_name("email").clear()
             driver.find_element_by_name("email").send_keys(contact.email1)
+        if contact.homephone != None:
+            driver.find_element_by_name("home").clear()
+            driver.find_element_by_name("home").send_keys(contact.homephone )
+        if contact.mobilephone != None:
+            driver.find_element_by_name('mobile').clear()
+            driver.find_element_by_name('mobile').send_keys(contact.mobilephone)
+        if contact.workphone != None:
+            driver.find_element_by_name('work').clear()
+            driver.find_element_by_name('work').send_keys(contact.workphone)
+        if contact.secondaryphone != None:
+            driver.find_element_by_name('phone2').clear()
+            driver.find_element_by_name('phone2').send_keys(contact.secondaryphone)
+        if contact.address != None:
+            driver.find_element_by_name("address").clear()
+            driver.find_element_by_name("address").send_keys(contact.address)
+        if contact.email2 != None:
+            driver.find_element_by_name("email2").clear()
+            driver.find_element_by_name("email2").send_keys(contact.email2)
+        if contact.email3 != None:
+            driver.find_element_by_name("email3").clear()
+            driver.find_element_by_name("email3").send_keys(contact.email3)
+        if contact.title != None:
+            driver.find_element_by_name('title').clear()
+            driver.find_element_by_name('title').send_keys(contact.title)
+        if contact.notes != None:
+            driver.find_element_by_name('notes').clear()
+            driver.find_element_by_name('notes').send_keys(contact.notes)
+        if contact.company != None:
+            driver.find_element_by_name('company').clear()
+            driver.find_element_by_name('company').send_keys(contact.company)
+        if contact.homepage != None:
+            driver.find_element_by_name('homepage').clear()
+            driver.find_element_by_name('homepage').send_keys(contact.homepage)
+        if contact.fax != None:
+            driver.find_element_by_name('fax').clear()
+            driver.find_element_by_name('fax').send_keys(contact.fax)
 
     def modify_first_contact(self, contact):
         self.modify_contact_by_index(contact, 0)
