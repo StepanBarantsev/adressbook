@@ -91,3 +91,13 @@ class GroupHelper:
     def select_group_by_id(self, id):
         driver = self.app.driver
         driver.find_element_by_css_selector("input[value='%s']" % id).click()
+
+    def modify_group_by_id(self, group, id):
+        driver = self.app.driver
+        self.open_groups_page()
+        self.select_group_by_id(id)
+        driver.find_element_by_css_selector('input[name="edit"]').click()
+        self.input_group_fields(group)
+        driver.find_element_by_name("update").click()
+        driver.find_element_by_link_text("group page").click()
+        self.group_cashe = None
