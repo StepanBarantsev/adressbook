@@ -173,6 +173,19 @@ class ContactHelper:
         driver.find_element_by_link_text("home").click()
         self.cont_cashe = None
 
+    def modify_contact_by_id(self, contact, id):
+        driver = self.app.driver
+        self.app.open_home_page()
+        self.open_contact_to_edit_by_id(id)
+        self.input_contact_fields(contact)
+        driver.find_element_by_css_selector('input[name="update"]').click()
+        driver.find_element_by_link_text("home page").click()
+        self.cont_cashe = None
+
+    def open_contact_to_edit_by_id(self, id):
+        driver = self.app.driver
+        self.app.open_home_page()
+        driver.find_elements_by_css_selector('img[alt="Edit"]').click()
 
 
 
