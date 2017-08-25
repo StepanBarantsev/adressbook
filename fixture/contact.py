@@ -164,6 +164,15 @@ class ContactHelper:
         all_inf = driver.find_element_by_css_selector('div#content').text      # Тут все данные считываются лопатой
         return Contact(all_information=all_inf)
 
+    def delete_contact_by_id(self, id):
+        driver = self.app.driver
+        self.app.open_home_page()
+        driver.find_element_by_css_selector("input[value='%s']" % id).click()
+        driver.find_element_by_css_selector("input[value='Delete']").click()
+        driver.switch_to_alert().accept()
+        driver.find_element_by_link_text("home").click()
+        self.cont_cashe = None
+
 
 
 

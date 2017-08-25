@@ -1,5 +1,5 @@
 from models.model_group import Group
-import  random
+import random
 
 
 def test_del_some_group(app, db, check_ui):
