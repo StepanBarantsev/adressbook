@@ -11,7 +11,7 @@ def test_modify_some_contact(app, db, check_ui):
                                     nickname='bars', email1='stepan.barantsev@gmail.com')
     cont = random.choice(old_contacts)
     new_cont.id = cont.id
-    app.contact.modify_contact_by_id(new_cont, id)
+    app.contact.modify_contact_by_id(new_cont, cont.id)
     new_contacts = db.get_contact_list()
     old_contacts.remove(cont)
     old_contacts.append(new_cont)

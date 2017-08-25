@@ -185,7 +185,7 @@ class ContactHelper:
     def open_contact_to_edit_by_id(self, id):
         driver = self.app.driver
         self.app.open_home_page()
-        driver.find_elements_by_css_selector('img[alt="Edit"]').click()
+        driver.find_element_by_css_selector('a[href="edit.php?id=%s"]' % id).click()
 
 
 
