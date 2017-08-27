@@ -19,3 +19,5 @@ def test_add_contact_to_group(app, db):
     new_contacts_in_group = db.get_contacts_in_group(group)
     contacts_in_group.append(contact)
     assert sorted(contacts_in_group, key=Contact.id_or_max) == sorted(new_contacts_in_group, key=Contact.id_or_max)
+    assert contact in db.get_contacts_in_group(group)
+    assert contact not in db.get_contacts_not_in_group(group)

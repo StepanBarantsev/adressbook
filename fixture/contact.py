@@ -1,6 +1,5 @@
 from models.model_contact import Contact
-import re
-from selenium.webdriver.support.ui import Select
+
 
 class ContactHelper:
 
@@ -193,5 +192,17 @@ class ContactHelper:
         driver.find_element_by_css_selector("input[value='%s']" % contact.id).click()
         driver.find_element_by_name("to_group").find_element_by_css_selector("option[value='%s']" % group.group_id).click()
         driver.find_element_by_name("add").click()
+        self.cont_cashe = None
+
+
+
+    def delete_contact_from_group(self, contact, group):
+        driver = self.app.driver
+        self.app.open_home_page()
+        driver.find_element_by_css_selector("a[href='view.php?id=%s']" % contact.id).click()
+        driver.find_element_by_css_selector("a[href='./index.php?group=%s']" % group.group_id).click()
+        driver.find_element_by_css_selector("input[value='%s']" % contact.id).click()
+        driver.find_element_by_name("remove").click()
+        self.cont_cashe = None
 
 
