@@ -1,6 +1,6 @@
 from models.model_contact import Contact
 import re
-
+from selenium.webdriver.support.ui import Select
 
 class ContactHelper:
 
@@ -187,5 +187,11 @@ class ContactHelper:
         self.app.open_home_page()
         driver.find_element_by_css_selector('a[href="edit.php?id=%s"]' % id).click()
 
+    def add_contact_to_group(self, contact, group):
+        driver = self.app.driver
+        self.app.open_home_page()
+        driver.find_element_by_css_selector("input[value='%s']" % contact.id).click()
+        Select(driver.find_element_by_name("to_group")).select_by_value("%s" % group.group_id).click()
+        driver.find_element_by_name("add").click()
 
 

@@ -7,7 +7,7 @@ db = ORMFixture(host='127.0.0.1', name='addressbook', user='root', password='')
 
 
 try:
-    l = db.get_contacts_not_in_group(Group(group_id=612))
+    l = db.get_contacts_in_group(Group(group_id=612))
     for i in l:
         print(i)
     print(len(l))
