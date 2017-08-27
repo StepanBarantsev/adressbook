@@ -21,16 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test_add_group.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_add_group.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="model_contact.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/model_contact.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_add_cont_to_group.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_add_cont_to_group.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_add_cont_to_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.008474576">
+              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -57,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/conftest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+              <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -67,17 +57,27 @@
         <entry file="file://C:/Python35/Lib/site-packages/_pytest/python.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+              <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contact.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pluggy.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Python35/Lib/site-packages/_pytest/vendored_packages/pluggy.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="595" column="0" selection-start-line="595" selection-start-column="0" selection-end-line="595" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="contact.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fixture/contact.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37570623">
-              <caret line="190" column="32" selection-start-line="190" selection-start-column="32" selection-end-line="190" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -176,9 +176,9 @@
         <option value="$PROJECT_DIR$/tests/test_delete_contact_from_group.py" />
         <option value="$PROJECT_DIR$/tests/test_add_contact_to_group.py" />
         <option value="$PROJECT_DIR$/db.py" />
+        <option value="$PROJECT_DIR$/fixture/contact.py" />
         <option value="$PROJECT_DIR$/conftest.py" />
         <option value="$PROJECT_DIR$/tests/test_add_cont_to_group.py" />
-        <option value="$PROJECT_DIR$/fixture/contact.py" />
       </list>
     </option>
   </component>
@@ -621,27 +621,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 24m 37s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 26m 59s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 28m 21s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 28m 52s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 29m 47s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 34m 53s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 43m 34s.xml">
-      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
-    </history-entry>
     <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 52m 59s.xml">
       <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
     </history-entry>
@@ -651,12 +630,33 @@
     <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 16h 56m 15s.xml">
       <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 33m 29s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 34m 57s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 35m 34s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 36m 00s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 38m 33s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 38m 44s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_add_cont_to_group_py - 2017.08.27 at 19h 39m 02s.xml">
+      <configuration name="py.test in test_add_cont_to_group.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1368" height="723" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2485294" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -746,8 +746,13 @@
           <line>192</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/test_add_cont_to_group.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="47" />
+      <option name="time" value="49" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -889,13 +894,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python35/Lib/site-packages/_pytest/vendored_packages/pluggy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2826087">
-          <caret line="263" column="0" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1113,7 +1111,15 @@
     <entry file="file://$PROJECT_DIR$/conftest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixture/contact.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1121,26 +1127,26 @@
     <entry file="file://C:/Python35/Lib/site-packages/_pytest/python.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="286" column="0" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
+          <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python35/Lib/site-packages/_pytest/vendored_packages/pluggy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="595" column="0" selection-start-line="595" selection-start-column="0" selection-end-line="595" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_add_cont_to_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state vertical-scroll-proportion="-0.008474576">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fixture/contact.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37570623">
-          <caret line="190" column="32" selection-start-line="190" selection-start-column="32" selection-end-line="190" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>

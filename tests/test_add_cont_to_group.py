@@ -3,7 +3,7 @@ from models.model_group import Group
 import random
 
 
-def test_add_contact_to_group(app, db, check_ui):
+def test_add_contact_to_group(app, db):
     contact_list = db.get_contact_list()
     if len(contact_list) == 0:
         app.contact.create_new_contact(Contact(firstname="FF", lastname="HH", nickname="bbb"))
@@ -19,5 +19,3 @@ def test_add_contact_to_group(app, db, check_ui):
     new_contacts_in_group = db.get_contacts_in_group(group)
     contacts_in_group.append(contact)
     assert sorted(contacts_in_group, key=Contact.id_or_max) == sorted(new_contacts_in_group, key=Contact.id_or_max)
-    if check_ui:
-        assert sorted(new_contacts_in_group, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)

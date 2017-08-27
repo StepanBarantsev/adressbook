@@ -191,7 +191,7 @@ class ContactHelper:
         driver = self.app.driver
         self.app.open_home_page()
         driver.find_element_by_css_selector("input[value='%s']" % contact.id).click()
-        Select(driver.find_element_by_name("to_group")).select_by_value("%s" % group.group_id).click()
+        driver.find_element_by_name("to_group").find_element_by_css_selector("option[value='%s']" % group.group_id).click()
         driver.find_element_by_name("add").click()
 
 

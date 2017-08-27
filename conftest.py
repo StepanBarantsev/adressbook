@@ -35,7 +35,7 @@ def db(request):
     db_config = load_config(request.config.getoption("--target"))['db']
     dbfixture = ORMFixture(host='127.0.0.1', name='addressbook', user='root', password='')
     def fin():
-        dbfixture.destroy()
+        pass
     request.addfinalizer(fin)
     return dbfixture
 
