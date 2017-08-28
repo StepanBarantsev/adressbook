@@ -1,4 +1,5 @@
 from models.model_contact import Contact
+from time import sleep
 
 
 class ContactHelper:
@@ -203,6 +204,7 @@ class ContactHelper:
         driver.find_element_by_css_selector("a[href='./index.php?group=%s']" % group.group_id).click()
         driver.find_element_by_css_selector("input[value='%s']" % contact.id).click()
         driver.find_element_by_name("remove").click()
+        sleep(2)
         self.cont_cashe = None
 
 

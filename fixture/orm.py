@@ -50,7 +50,7 @@ class ORMFixture:
 
     def convert_contacts_to_models(self, contacts):
         def convert(contact):
-            return Contact(firstname=contact.firstname, lastname=contact.lastname, id=contact.id, homephone=contact.homephone,
+            return Contact(firstname=contact.firstname, lastname=contact.lastname, id=str(contact.id), homephone=contact.homephone,
                        mobilephone=contact.mobilephone, workphone=contact.workphone, secondaryphone=contact.secondaryphone,
                        email1=contact.email1, email2=contact.email2, email3=contact.email3, address=contact.address,
                        middlename=contact.middlename,
